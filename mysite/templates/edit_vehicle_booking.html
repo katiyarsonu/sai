@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Vehicle Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d4d5d7;
+            color:  #000000;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1877F2;
+        }
+        
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        form input[type="text"],
+        form input[type="number"],
+        form select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border-image: conic-gradient( #00F260, #0575E6,#64f38c) 1;
+        }
+        
+        form button[type="submit"] {
+            background-color: #1877F2 ;
+            color: #1877F2;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        form button[type="submit"]:hover {
+            background-color: #1877F2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Vehicle Booking</h1>
+    <form method="POST" action="{% url 'update_vehicle_booking' %}">
+        {% csrf_token %}
+        
+        
+        <div>
+            <label for="consignor_name">Consignor:</label>
+            <input type="text" name="consignor_name" id="consignor_name" value="{{ booking.Consignor}}">
+        </div>
+        <div>
+            <label for="id">ID:</label>
+            <input type="number" name="id" id="id" value="{{ booking.id }}">
+        </div>
+        
+        <div>
+            <label for="month">Month:</label>
+            <input type="text" name="month" id="month" placeholder="e.g. January" value="{{ booking.month }}" required>
+        </div>
+        
+        <div>
+            <label for="booking_freight">Booking Freight:</label>
+            <input type="text" name="booking_freight" id="booking_freight" value="{{ booking.Booking_Freight }}">
+        </div>
+        
+        <div>
+            <label for="lhc_no">LHC No:</label>
+            <input type="text" name="lhc_no" id="lhc_no" value="{{ booking.LHC_No }}">
+        </div>
+        
+        <div>
+            <label for="party_due_other">Party Due Other:</label>
+            <input type="text" name="party_due_other" id="party_due_other" value="{{ booking.Party_Due_Other }}">
+        </div>
+        
+        <div>
+            <label for="cash_to_driver">Cash To Driver:</label>
+            <input type="text" name="cash_to_driver" id="cash_to_driver" value="{{ booking.Cash_To_Driver }}">
+        </div>
+        
+        <div>
+            <label for="advance_freight_cash">Advance Freight Cash:</label>
+            <input type="text" name="advance_freight_cash" id="advance_freight_cash" value="{{ booking.Advance_Freight_Cash }}">
+        </div>
+        
+        <div>
+            <label for="advance_freight_neft">Advance Freight NEFT:</label>
+            <input type="text" name="advance_freight_neft" id="advance_freight_neft" value="{{ booking.Advance_Freight_NEFT }}">
+        </div>
+        
+        <div>
+            <label for="detention_charges">Detention Charges:</label>
+            <input type="text" name="detention_charges" id="detention_charges" value="{{ booking.DetentionCharges_OverloadChallan_Tax }}">
+        </div>
+        
+        <div>
+            <label for="unloading_charges">Unloading Charges:</label>
+            <input type="text" name="unloading_charges" id="unloading_charges" value="{{ booking.Unloading_chargespaidtodriver }}">
+        </div>
+        
+        <div>
+            <label for="balance">Balance:</label>
+            <input type="text" name="balance" id="balance" value="{{ booking.Balance }}">
+        </div>
+        
+        <div>
+            <label for="total_freight">Total Vehicle Freight:</label>
+            <input type="text" name="total_freight" id="total_freight" value="{{ booking.Total_Vehicle_Freight }}">
+        </div>
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Update Booking</h1>
+
+{% if form.errors %}
+    <div class="alert alert-danger">
+        There were errors with your form submission. Please correct the errors and try again.
+    </div>
+{% endif %}
+
+<form action="{% url 'update_booking' booking.id %}" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">Update</button>
+
+</form>
+
+{% endblock %}

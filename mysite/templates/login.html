@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      height: 100vh;
+      background-color:#edf1fd;
+      background-image: url(static/Login.png);
+      background-position: left;
+      background-size: 50% auto;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #ffffff;
+      margin-right: 110px; /* Adjust the right margin as desired */
+    }
+
+    .container h2 {
+      text-align: center;
+    }
+
+    .container select,
+    .container input[type="text"],
+    .container input[type="password"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border-image: conic-gradient(#00F260, #0575E6, #64f38c) 1;
+    }
+
+    .container input[type="submit"] {
+      width: 100%;
+      background-color: #9fc5e8;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    .container input[type="submit"]:hover {
+      background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form action="{% url 'login_view' %}" method="post">
+      <!---  {% csrf_token %}-->
+      <img src="static/edit.png" height="80px" width="80px" style="display: block; margin: 0 auto;">
+      <h2 style="text-align: center;">CC&L</h2>
+      <p>"transport with us and grow with us"</p>
+      <h2>Login</h2>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+</body>
+</html>

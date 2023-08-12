@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Vehicle Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d4d5d7;
+            color: #333;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1877F2;
+        }
+        
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        form input[type="text"],
+        form input[type="number"],
+        form select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border-image: conic-gradient( #00F260, #0575E6,#64f38c) 1;
+        }
+        
+        form button[type="submit"] {
+            background-color: #1877F2; ;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        form button[type="submit"]:hover {
+            background-color: #351c75;
+        }
+    </style>
+</head>
+<body>
+    <h1>New Booking</h1>
+    <form method="POST" action="{% url 'add_booking' %}">
+        {% csrf_token %}
+        
+        <div class="dropdown">
+            <label for="consignor_name">Consignor:</label>
+            <select name="consignor_name" id="consignor_name">
+                <option value="" disabled selected>Select Consignor</option>
+                {% for consignor in consignor_list %}
+                    <option value="{{ consignor.Consignor }}">{{ consignor.Consignor }}</option>
+                {% endfor %}
+            </select>
+            <input type="text" name="other_consignor" id="other_consignor" placeholder="Other Consignor">
+        </div>
+        <div class="dropdown">
+            <label for="consignee">Consignee:</label>
+            <select name="consignee" id="consignee">
+              <option value="" disabled selected>Select Consignor</option>
+              {% for consignee in consignee_list %}
+                <option value="{{ consignee.Consignee }}">{{ consignee.Consignee }}</option>
+              {% endfor %}
+            </select>
+            <input type="text" name="other_consignee" id="other_consignee" placeholder="Other Consignee">
+          </div>
+        <div>
+            <label for="LR_No">LR No:</label>
+            <input type="number" name="LR_No" id="LR_No" value="{{ booking.LR_No}}">
+        </div>
+        
+        <div>
+            <label for="id">ID:</label>
+            <input type="number" name="id" id="id" value="{{ booking.id }}">
+        </div>
+        
+        <div>
+            <label for="month">Month:</label>
+            <select name="month" id="month" required>
+                <option value="" disabled selected>Select month</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="booking_freight">Booking Freight:</label>
+            <input type="text" name="booking_freight" id="booking_freight" value="{{ booking.Booking_Freight }}">
+        </div>
+        
+        <div>
+            <label for="lhc_no">LHC No:</label>
+            <input type="text" name="lhc_no" id="lhc_no" value="{{ booking.LHC_No }}">
+        </div>
+        
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

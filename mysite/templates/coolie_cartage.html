@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Vehicle Booking</title>
+    <style>
+        /* Add your CSS styles here */
+        /* Customize the CSS styles as per your requirements */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+        .consignor-list {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 20px;
+        }
+
+        .dropdown {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Coolie Cartage</h1>
+    <form method="GET" action="{% url 'coolie_cartage' %}">
+        <div class="dropdown">
+            <label for="consignor_name">Consignor:</label>
+            <select name="consignor_name" id="consignor_name" required>
+                <option value="" disabled selected>Select Consignor</option>
+                {% for consignor in consignor_list %}
+                    <option value="{{ consignor.Consignor }}">{{ consignor.Consignor }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="month">Month:</label>
+            <input type="text" name="month" id="month" placeholder="e.g. January" required>
+        </div>
+        
+        <div class="dropdown">
+            <label for="record_type">Record Type:</label>
+            <select name="record_type" id="record_type">
+                <option value="outstanding">Outstanding</option>
+                <option value="expenses">Expenses</option>
+            </select>
+        </div>
+
+        <button type="submit">Search</button>
+    </form>
+
+    {% if bookings %}
+        <h2>Search Results:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hamali Charge</th>
+                        <th>Unloading charges paid to driver</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                        <tr>
+                            <td>{{booking.Hamali_Charge}}</td>
+                            <td>{{ booking.Unloading_chargespaidtodriver }}</td>
+                            
+                        
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+            
+    {% endif %}  
+    
+    <div class="consignor-list">
+        <h3>Consignor List:</h3>
+        <ul>
+            {% for consignor in consignor_list %}
+                <li>{{ consignor.Consignor }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

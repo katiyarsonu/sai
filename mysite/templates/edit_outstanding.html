@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Outstanding</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d4d5d7;
+            color: #000000;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1877F2;
+        }
+        
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            
+        }
+        
+        form input[type="text"],
+        form input[type="number"],
+        form select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border-image: conic-gradient( #00F260, #0575E6,#64f38c) 1;
+           
+            
+        }
+        
+        form button[type="submit"] {
+            background-color:#1877F2;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        form button[type="submit"]:hover {
+            background-color:#351c75;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Outstanding</h1>
+    <form method="POST" action="{% url 'update_outstanding' %}">
+        {% csrf_token %}
+        
+        <label for="lr_no">LR No:</label>
+        <input type="text" id="lr_no" name="lr_no" value="{{outstanding.LR_No|default_if_none:''}}" required>
+
+        
+        <label for="bill_no">Bill No:</label>
+        <input type="text" id="bill_no" name="bill_no" value="{{outstanding.Bill_No}}" required>
+        
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" value="{{outstanding.Date}}">
+        
+        <label for="freight_amount">Freight Amount:</label>
+        <input type="number" id="freight_amount" name="freight_amount" value="{{outstanding.Freight_amount}}" required>
+        
+        <label for="total_bill_amount">Total Bill Amount:</label>
+        <input type="number" id="total_bill_amount" name="total_bill_amount" value="{{outstanding.Total_Bill_Amount}}" required>
+        
+        <label for="bill_subon">Bill SubOn:</label>
+        <input type="date" id="bill_subon" name="bill_subon" value="{{outstanding.Bill_SubOn}}" required>
+        
+        <label for="received_amount">Received Amount:</label>
+        <input type="number" id="received_amount" name="received_amount" value="{{outstanding.Received_amount}}" required>
+        
+        <label for="received_on_dt">Received On Date:</label>
+        <input type="date" id="received_on_dt" name="received_on_dt" value="{{outstanding.Received_on_dt}}" required>
+        
+        <label for="payment_mode">Payment Mode:</label>
+        <input type="text" id="payment_mode" name="payment_mode" value="{{outstanding.Payment_mode}}" required>
+
+       
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

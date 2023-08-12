@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Vehicle Booking</title>
+    <style>
+        /* Add your CSS styles here */
+        /* Customize the CSS styles as per your requirements */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #d4d5d7;
+        }
+
+        h1 {
+            color: #333;
+        }
+        .button-container a {
+        display: inline-block;
+        margin-right: 10px; /* Adjust the margin as desired */
+    }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+        }
+
+        button[type="submit"] {
+            padding: 5px 10px;
+            background-color:#1877F2;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #351c75;
+        }
+         
+        .select-btn {
+      margin-top: 10px; /* Adds some space between the content and select button */
+      padding: 5px 10px;
+      background-color: #1877F2;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #fff;
+        }
+
+        th {
+            background-color: #ffff;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+        .consignor-list {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 20px;
+        }
+
+        .dropdown {
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Search Vehicle Booking</h1>
+    <!--'/see_values/{{booking.id}}/'-->
+    <form method="GET" action="{% url 'search_vehicle_booking1' %}">
+        <div class="dropdown">
+            <label for="consignor_name">Consignor:</label>
+            <select name="consignor_name" id="consignor_name" required>
+                <option value="" disabled selected>Select Consignor</option>
+                {% for consignor in consignor_list %}
+                    <option value="{{ consignor.Consignor }}">{{ consignor.Consignor }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="month">Month:</label>
+            <select name="month" id="month" required>
+                <option value="" disabled selected>Select month</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        </div>
+        
+        
+        
+
+        <button type="submit">Search</button>
+    </form>
+    
+    {% if bookings %}
+        <h2>Search Results:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>LR No.</th>
+                        <th>Consignor</th>
+                        <th>Booking Freight</th>
+                        <th>LHC No</th>
+                
+                        <th>Cash To Driver</th>
+                        <th>Advance Freight Cash</th>
+                        <th>Advance Freight NEFT</th>
+                        <th>DetentionCharges OverloadChallan Tax</th>
+                        <th>Unloading charges paid to driver</th>
+                        <th>Balance</th>
+                        <th>Total Vehicle Freight</th>
+                    
+                        <th>UPDATE POD</th>
+                        <th>UPDATE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                        <tr>
+                            <td>{{booking.id}}</td>
+                            <td>{{booking.LR_NO}}</td>
+                            <td>{{ booking.Consignor }}</td>
+                            <td>{{booking.Booking_Freight}}</td>
+                            <td>{{booking.LHC_No}}</td>
+                        
+                            <td>{{ booking.Cash_To_Driver }}</td>
+                            <td>{{ booking.Advance_Freight_Cash }}</td>
+                            <td>{{ booking.Advance_Freight_NEFT }}</td>
+                            <td>{{ booking.DetentionCharges_OverloadChallan_Tax }}</td>
+                            <td>{{ booking.Unloading_chargespaidtodriver }}</td>
+                            <td>{{ booking.Balance }}</td>
+                            <td>{{ booking.Total_Vehicle_Freight}}</td>
+                            <td>
+                                <div class="button-container">
+                                    <a href='/see_values/{{booking.id}}/' class="select-btn">Yes</a>
+                                    <a href='/see_values_No/{{booking.id}}/' class="select-btn">No</a>
+                                </div>
+                            </td>
+                            
+                            <td>
+                                <a href='/update_entries/{{booking.LR_NO}}/' class="select-btn">UPDATE</a>
+                        
+                            </td> 
+                        
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+            <h3>Expenses:{{expenses}}</h3>
+    {% endif %}  
+    
+    
+</body>
+</html>

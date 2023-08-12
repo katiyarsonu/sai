@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Transporter</title>
+    <link rel="stylesheet" href="{% static 'jquery-ui/jquery-ui.min.css' %}">
+</head>
+<body>
+    <h1>Create Transporter</h1>
+
+    <form method="POST" action="{% url 'create_transporter' %}">
+        {% csrf_token %}
+        <label for="id_tpt">TPT:</label>
+        <input type="text" id="id_tpt" name="tpt" autocomplete="off">
+
+        <label for="id_tpt_pan">PAN:</label>
+        <input type="text" id="id_tpt_pan" name="tpt_pan" readonly>
+
+        <!-- Other fields for Transporter model -->
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="{% static 'jquery-ui/jquery-ui.min.js' %}"></script>
+    <script>
+        $("#id_tpt").autocomplete({
+    source: "{% url 'tpt_autocomplete' %}",
+    minLength: 2,
+    select: function(event, ui) {
+        if (ui.item) {
+            $("#id_tpt_pan").val(ui.item.value);
+        }
+    }
+});
+
+
+       
+    </script>
+</body>
+</html>

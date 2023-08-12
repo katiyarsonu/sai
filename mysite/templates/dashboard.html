@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transportation System Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d4d5d7;
+      
+
+    }
+    .button {
+    display: inline-block;
+    background-color: #1877F2;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  
+  .header {
+    background-color: #1877F2;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .header img {
+    margin-right: 10px;
+  }
+
+  .header h1 {
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+  }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Aligns the cards horizontally in the center */
+    }
+
+    .card {
+      width: 300px;
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color:hsl(0, 0%, 95%);
+      transition: box-shadow 0.3s;
+      position: relative;
+      text-align: center; /* Aligns the card content in the center */
+    }
+    
+
+    .card:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card p {
+      margin-bottom: 0;
+    }
+
+    .select-btn {
+      margin-top: 10px; /* Adds some space between the content and select button */
+      padding: 5px 10px;
+      background-color:#1E90FF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="{%static 'edit.png'%}" alt="my" height="100px" width="100px"/>
+    <h1>Charu Cargo And Logistics </h1>
+    
+  </div>
+  
+  <div class="container">
+    <div class="card">
+      <h3>Vehicle Booking Table</h3>
+      <a href="http://127.0.0.1:8000/admin/service/vehicle_booking_statement/" class="select-btn">View</a>
+      <a href="{% url 'export' %}" class="select-btn">Export</a>
+
+    </div>
+    <div class="card">
+      <h3>Vehicle Booking Statement</h3>
+      <a href="{% url 'search_vehicle_booking1' %}" class="select-btn">Booking Statement</a>
+    </div>
+
+    <div class="card">
+      <h3>New Booking</h3>
+      <a href="{% url 'newbooking' %}" class="select-btn">Add</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <h3>Outstanding Table</h3>
+      <a href="http://127.0.0.1:8000/admin/service/outstanding/" class="select-btn">View</a>
+      <a href="{% url 'export1' %}" class="select-btn">Export</a>
+    </div>
+
+    <div class="card">
+      <h3>Outstanding</h3>
+      <a href="{% url 'search_vehicle_booking' %}" class="select-btn">Outstanding</a>
+    </div>
+    <div class="card">
+      <h3>Expenses</h3>
+      <a href="http://127.0.0.1:8000/admin/service/vehical_expenses/" class="select-btn">View</a>
+      <a href="{% url 'export' %}" class="select-btn">Export</a>
+    </div>
+
+  </div>
+  <div class="container">
+  <div class="container1">
+    <div class="card">
+      <h3>Bill Register</h3>
+     <a href="http://127.0.0.1:8000/admin/service/bill_reg/" class="select-btn">View</a>
+      <a href="{% url 'export2' %}" class="select-btn">Export</a>
+    </div>
+  </div>
+  <div class="container1">
+    <div class="card">
+      <h3>Upload file</h3>
+      <a href="{% url 'upload_excel' %}" class="select-btn">Upload file</a>
+      <a href="{% url 'master' %}" class="select-btn">Summary</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

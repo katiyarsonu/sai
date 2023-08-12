@@ -1,0 +1,224 @@
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 12px;
+      text-align: center;
+      margin-bottom: 0px;
+    }
+
+    h3 {
+      font-size: 6px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 5px;
+      margin-top: 0px;
+    }
+
+    table th,
+    table td {
+      border: 1px solid #000;
+      padding: 6px;
+      text-align: left;
+    }
+
+    .align-right {
+      text-align: right;
+    }
+    .terms-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 0px;
+    }
+
+    .terms-table th,
+    .terms-table td {
+      border: 1px solid #000;
+      padding: 6px;
+      text-align: left;
+    }
+
+    .terms-table td.description {
+      width: 65%;
+    }
+
+    .terms-table td.signatory {
+      text-align: bottom;
+    }
+
+    .terms-table td.bottom {
+      vertical-align: bottom;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+
+  
+    <table style="font-size: 10px; margin-top: 0px;">
+      <tr>
+        <td> <h2 style="text-align: left;">CHARU CARGO & LOGISTICS </h2></td> <td><h2 style="text-align: left;">GSTIN: 08EAGPS7598R1Z7</h2></td>
+      </tr>
+      <tr>  
+        <td><p style="font-size: 8px; text-align: left;">"Transport with us, Grow with us"</p></td>
+        <td><p style="font-size: 8px; text-align: right;">PAN No: EAGPS7598R</p></td>
+    </tr>
+    
+    <tr>
+      <td><p style="font-size: 8px; text-align: left;">C-483, Nirman Nagar, Ajmer Road, Jaipur-302019, Mobile: 9461777403</p></td>
+      <td><p style="font-size: 8px; text-align: right;">E-mail: logisticscharu@gmail.com</p></td>
+  </tr>
+       
+    </table>
+    <table style="font-size: 12px; margin-top: 0px;">
+      <tr> 
+        <h3 style="text-align: center; font-size: 10px;">Bill of Supply</h3>
+      </tr>
+    </table>
+
+    <table style="font-size: 8px; margin-top: 0px;">
+      <tr>
+        <th>Invoice No</th>
+        <th>State</th>
+        <th>Date of Issue</th>
+        <th>State Code</th>
+      </tr>
+      <tr>
+        <td>{{bill_no}}</td>
+        <td>Rajasthan</td>
+        <td>{{date}}</td>
+        <td>08</td>
+      </tr>
+    </table>
+
+    <table style="font-size: 8px;">
+      <tr>
+        <td style="vertical-align: top; width: 35%; border: 1px solid black; padding: 0;">
+          <h3 style="text-align: left; font-size: 10px; margin: 0;border-bottom: 1px solid black;">Bill to Party</h3>
+          <p style="border-bottom: 1px solid black; margin: 0;">M/s.{{party_name}}</p>
+          <p style="border-bottom: 1px solid black; margin: 0;">{{address1}}</p>
+          <p style="border-bottom: 1px solid black; margin: 0;">{{address2}}</p>
+          <p style="border-bottom: 1px solid black; margin: 0;">GSTIN/UIN:{{gst}}</p>
+          <p style="border-bottom: 1px solid black; margin: 0;">State: Rajasthan</p>
+        </td>
+        <td style="vertical-align: top; width: 35%; border: 1px solid black; padding: 0;">
+            <h3 style="text-align: left; font-size: 10px; margin: 0;border-bottom: 1px solid black;">Bill to Party</h3>
+            <p style="border-bottom: 1px solid black; margin: 0;">M/s.{{party_name}}</p>
+            <p style="border-bottom: 1px solid black; margin: 0;">{{address1}}</p>
+            <p style="border-bottom: 1px solid black; margin: 0;">{{address2}}</p>
+            <p style="border-bottom: 1px solid black; margin: 0;">GSTIN/UIN:{{gst}}</p>
+            <p style="border-bottom: 1px solid black; margin: 0;">State: Rajasthan</p>
+          </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="border-top: 1px solid black;">
+          <h3 style="font-size: 8px; margin-top: 0px;">GSTIN Tax ON THE ABOVE SERVICES IS BEING PAID DIRECTLY BY {{party_name}}</h3>
+        </td>
+      </tr>
+    </table>
+
+    <table style="font-size: 8px; margin-top: 0px;">
+      <tr>
+        <th>S.No.</th>
+        <th>Description of Services</th>
+        <th>HSN/SAC</th>
+        <th>Qty.</th>
+        <th>Rate</th>
+        <th>Amount</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Transportation of Goods (CGST @ 2.5%, SGST @ 2.5%)</td>
+        <td>{{hsn_code}}</td>
+        <td>1</td>
+        <td>{{outstanding.Total_Bill_Amount}}</td>
+        <td>{{outstanding.Total_Bill_Amount}}</td>
+      </tr>
+    </table>
+
+    <table style="font-size: 8px; margin-top: 0px;">
+      <tr>
+        <td style="text-align: right; font-weight: bold;" colspan="5">Total Amount</td>
+        <td style="text-align: right;">{{outstanding.Total_Bill_Amount}}</td>
+      </tr>
+      <tr>
+        <td style="text-align: right; font-weight: bold;" colspan="5">CGST @ 2.5%</td>
+        <td style="text-align: right;">{{tax}}</td>
+      </tr>
+      <tr>
+        <td style="text-align: right; font-weight: bold;" colspan="5">SGST @ 2.5%</td>
+        <td style="text-align: right;">{{tax}}</td>
+      </tr>
+      <tr>
+        <td style="text-align: right; font-weight: bold;" colspan="5">Grand Total</td>
+        <td style="text-align: right;">10,500</td>
+      </tr>
+    </table>
+
+    <table style="font-size: 8px; margin-top: 0px;">
+      <tr>
+        <td colspan="3" style="text-align: left; font-weight: bold;">Amount in Words: Rupees Ten Thousand Five Hundred Only</td>
+        
+      </tr>
+    </table>
+    <table style="font-size: 8px; border-collapse: collapse;">
+      <tr>
+        <td style="vertical-align: top; width: 35%; height: 35%; border: 1px solid black; padding: 0; margin: 0;">
+          <h3 style="text-align: center; font-size: 10px;border-bottom: 1px solid black; margin: 0;">Bank Details</h3>
+          <p style="border-bottom: 1px solid black; margin: 0;">Name of the Bank: ICICI Bank</p>
+          <p style="border-bottom: 1px solid black; margin: 0;">Address: Shiv Gyan Enclave, Goutam Marg, Kings Rd, Nirman Nagar, Jaipur, Rajasthan 302019</p>
+          <p style="border-bottom: 1px solid black; margin: 0;">Current A/c No: 674905601371</p>
+        </td>
+        <td style="vertical-align: top; width: 35%; height: 35%; border: 1px solid black; padding: 0; margin: 0;">
+          <h3 style="text-align: center; font-size: 10px;border-bottom: 1px solid black; margin: 0;">GST</h3>
+          <p style="border-bottom: 1px solid black; margin: 0;">TAXABLE VALUE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 38500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amount</p>
+          <p style="border-bottom: 1px solid black; margin: 0;">CGST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.50%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;962.5</p>
+          <p style="border-bottom: 1px solid black; margin: 0;">SGST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.50%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 962.5</p>
+          <p style="margin: 0;">Certified that the particulars given above are true and correct</p>
+        </td>
+      </tr>
+    </table>
+    <table class="terms-table">
+      <tr>
+        <td colspan="2">
+          <h3 style="text-align: left; font-size: 10px;">Terms &amp; Conditions</h3>
+        </td>
+      </tr>
+      <tr>
+        <td class="description" style="padding-right: 8px;">
+          <ol style="font-size: 8px; padding-left: 16px; margin: 0;">
+            <li>Interest @ 18% Per annum will be charged on all outstanding bills.</li>
+            <li>Payment of this bill may be made by a/c payee cheques or DD.</li>
+            <li>All subject to Jaipur Jurisdiction only.</li>
+            <li>Payment by cheques in our name should be payable at Jaipur.</li>
+          </ol>
+        </td>
+        <td class="signatory" style="text-align: right;">
+          <h3 class="align-right" style="font-size: 9px;position:bottom">Authorised Signatory</h3>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

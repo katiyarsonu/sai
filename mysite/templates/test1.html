@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Consignors</title>
+</head>
+<body>
+    <h1>Top Consignors and Their Total Booking Values</h1>
+    <div id="data-container">
+        <!-- Data will be displayed here -->
+    </div>
+
+    <!-- Include the JavaScript file -->
+    <script>
+        // Function to fetch data from the server
+function fetchTopConsignors() {
+    fetch('/get_top_consignors/') // Replace this with the actual endpoint to fetch data
+        .then(response => response.json())
+        .then(data => {
+            // Call the function to display the data
+            displayTopConsignors(data);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Function to display the fetched data
+function displayTopConsignors(data) {
+    const dataContainer = document.getElementById('data-container');
+    const topConsignors = data.topConsignors;
+    const topBookingValues = data.topBookingValues;
+
+    // Create and populate the HTML content
+    let content = '<ul>';
+    for (let i = 0; i < topConsignors.length; i++) {
+        content += `<li>${topConsignors[i]}: ${topBookingValues[i]}</li>`;
+    }
+    content += '</ul>';
+
+    // Update the HTML content in the data container
+    dataContainer.innerHTML = content;
+}
+
+// Fetch the data when the page loads
+window.onload = function() {
+    fetchTopConsignors();
+};
+
+    </script>
+    
+</body>
+</html>

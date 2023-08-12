@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Outstanding</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d4d5d7;
+            color:  #000000;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1877F2;
+        }
+        
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        form input[type="text"],
+        form input[type="number"],
+        form select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border-image: conic-gradient( #00F260, #0575E6,#64f38c) 1;
+        }
+        
+        form button[type="submit"] {
+            background-color:#1877F2;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        form button[type="submit"]:hover {
+            background-color: #351c75;
+        }
+    </style>
+</head>
+<body>
+    <h1>Print Bill</h1>
+    <form method="POST" action='/print-bill1/{{outstanding.LR_No}}/'>
+        {% csrf_token %}
+        
+        <label for="bill_no">Bill No:</label>
+        <input type="text" id="bill_no" name="bill_no" value="{{outstanding.Bill_No}}" required>
+        
+        <label for="date">Date of Issue:</label>
+        <input type="date" id="date" name="date" value="" required>
+        
+        <label for="party_name">Party Name:</label>
+        <input type="text" id="party_name" name="party_name" value="{{outstanding.Party_Name}}" required> 
+        <label for="Total_Bill_Amount">Total Amount:</label>
+        <input type="text" id="party_name" name="party_name" value="{{total_bill_amount}}" required>
+        <label for="address1">Address of party(Line1):</label>
+        <input type="text" id="address1" name="address1" required>
+
+        <label for="address2">Address of party(Line2):</label>
+        <input type="text" id="address2" name="address2" required>
+
+        <label for="GSTIN/UIN">GSTIN/UIN:</label>
+        <input type="text" id="GSTIN/UIN" name="GSTIN/UIN" required>
+
+        <label for="hsn_code">HSN CODE</label>
+        <input type="text" id="hsn_code" name="hsn_code" required>
+        
+        <button type="submit">Print</button>
+       
+        
+        
+       
+        
+    </form>
+</body>
+</html>

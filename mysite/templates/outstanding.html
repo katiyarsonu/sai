@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Outstanding Table</title>
+    <style>
+        /* Add your CSS styles here */
+        /* Customize the CSS styles as per your requirements */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Outstanding Table</h1>
+
+    {% if bookings %}
+    <table>
+        <thead>
+            <tr>
+                <th>Consignor</th>
+                <th>Booking Freight</th>
+                <th>Party Due</th>
+                <th>Total Due</th>
+                <th>Bilty Charge</th>
+                <th>Extra Point Charge</th>
+                <th>Extra Running Charge</th>
+                <th>Detention Charge</th>
+                <th>Hamali Charge</th>
+                <th>Other Extra Charge</th>
+                <th>Grand Total Booking</th>
+                <th>UPDATE</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.Consignor }}</td>
+                <td>{{ booking.Booking_Freight }}</td>
+                <td>{{ booking.Party_Due }}</td>
+                <td>{{ booking.Total_Due }}</td>
+                <td>{{ booking.Bilty_Charge }}</td>
+                <td>{{ booking.Extra_Point_Charge }}</td>
+                <td>{{ booking.Extra_Running_Charge }}</td>
+                <td>{{ booking.Detention_Charge }}</td>
+                <td>{{ booking.Hamali_Charge }}</td>
+                <td>{{ booking.Other_Extra_Charge }}</td>
+                <td>{{ booking.Grand_Total_Booking }}</td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No outstanding bookings found.</p>
+    {% endif %}
+</body>
+</html>
